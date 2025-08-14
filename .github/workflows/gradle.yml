@@ -12,6 +12,7 @@ on:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+  
 
 jobs:
   build:
@@ -35,7 +36,11 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
-
+    - name: Upload Tails JAR
+      uses: actions/upload-artifact@v4
+      with:
+          name: Tails-1.16.4
+          path: build/libs/*.jar
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
     #
